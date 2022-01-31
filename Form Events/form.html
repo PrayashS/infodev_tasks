@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="registration-form">
+      <div class="fieldset">
+        <legend>Wanna be Cool?!</legend>
+        <form action="#" method="post" data-validate="parsley">
+          <div class="row">
+            <label for="firstname">First Name</label>
+            <input
+              type="text"
+              placeholder="First Name"
+              name="firstname"
+              id="firstname"
+              data-required="true"
+              data-error-message="Your First Name is required "
+              onfocus="focusFunction(this)"
+            />
+          </div>
+          <div class="row">
+            <label for="email">E-mail</label>
+            <input
+              type="text"
+              placeholder="E-mail"
+              name="email"
+              data-required="true"
+              data-type="email"
+              data-error-message="Your E-mail is required"
+            />
+          </div>
+          <div class="row">
+            <label for="cemail">Confirm your E-mail</label>
+            <input
+              type="text"
+              placeholder="Confirm your E-mail"
+              name="cemail"
+              data-required="true"
+              data-error-message="Your E-mail must correspond"
+            />
+          </div>
+          <input type="submit" value="Register" />
+        </form>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function placeholderIsSupported() {
+      test = document.createElement("input");
+      return "placeholder" in test;
+    }
+
+    $(document).ready(function () {
+      placeholderSupport = placeholderIsSupported()
+        ? "placeholder"
+        : "no-placeholder";
+      $("html").addClass(placeholderSupport);
+    });
+    function focusFunction(element){
+        element.style.background="yellow";
+    }
+
+  </script>
+</html>
