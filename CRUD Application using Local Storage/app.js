@@ -40,6 +40,7 @@ function showitem(){
         html += `<tr>
                     <th scope="row">${index+1}</th>
                     ${itemCompleteValue}
+                    <td><button type="button" onclick="edititem(${index})" class="text-primary"><i class="fa fa-edit"></i>Edit</button></td>
                     <td><button type="button" onclick="deleteitem(${index})" class="text-danger" style="float:right"><i class="fa fa-trash"></i>Delete</button></td>
                 </tr>`;
     });
@@ -74,4 +75,57 @@ deleteallbtn.addEventListener("click", function(){
     localStorage.setItem("localitem", JSON.stringify(itemObj));
     showitem();
 
+})
+
+// Edit Item
+function edititem(index){
+    let saveindex = document.getElementById("saveindex");
+    let additembtn = document.getElementById("additembtn");
+    let saveitembtn = document.getElementById("saveitembtn");
+    
+    saveindex.value = index;
+    let webitem = localStorage.getItem("localitem");
+    let itemObj = JSON.parse(webitem);
+
+    additeminput.value = itemObj[index]["item_name"];
+    additembtn.style.display = "none";
+    saveitembtn.style.display = "block";
+}
+
+// Save Item
+let saveitembtn = document.getElementById("saveitembtn");
+saveitembtn.addEventListener("click", function(){
+
+    let additembtn = document.getElementById("additembtn");
+    let webitem = localStorage.getItem("localitem");
+    let itemObj = JSON.parse(webitem);
+    let saveindex = document.getElementById("saveindex").value;
+
+    for (keys in itemObj[saveindex]) {
+        if(keys == "item_name"){
+            itemObj[saveindex].item_name = additeminput.value;
+        }
+    }
+    saveitembtn.style.display = "none";
+    additembtn.style.display = "block";
+    localStorage.setItem("localitem", JSON.stringify(itemObj));
+    additeminput.value="";
+    showitem();
+})
+
+// Search List
+let searchtextbox = document.getElementById("searchtextbox");
+searchtextbox.addEventListener("input", function(){
+    let trlist = document.querySelectorAll("tr");
+    Array.from(trlist).forEach(function(item){
+        let searchedtext = item.getElementsByTagName("td")[0].innerText;
+        let searchtextboxval = searchtextbox.value;
+        let re = new RegExp(searchtextboxval, "gi");
+        if(searchedtext.match(re)){
+            item.style.displa="table-row";
+        }
+        else{
+            item.style.display = "none";
+        }
+    })
 })
