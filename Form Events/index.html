@@ -15,7 +15,7 @@
     <div class="container mt-5">
         <h1>Contact Form!</h1>
         <form action="#" class="row g-3" id="form">
-            <div class="parent">
+            <div id="parent">
             <div class="col-md-6">
                 <label for="firstName" class="form-label">First Name</label>
                 <input type="text" class="form-control" id="firstName" required
@@ -80,13 +80,18 @@
         function blurFunction(out){
             out.style.background="";
         }
-        // var parent = document.getElementById("parent");
 
-        // parent.addEventListener("click", event => {
-        //     if (event.target.className ==="form-control") {
-        //         console.log("Targeted");
-        //     }
-        // })
+
+        var parent = document.getElementById("parent");
+
+        parent.addEventListener("click", event => {
+            if (event.target.className ==="form-control") {
+                console.log("Targeted");
+            }
+        })
+
+
+
         function inputFunction(input){
             var x = input.value;
             document.getElementById("test").innerHTML = x;
