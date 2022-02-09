@@ -1,0 +1,36 @@
+<h1>{{ title }}</h1>
+<div>
+  <img [src]="imgUrl" alt="fool ko photo ho mula" />
+</div>
+<br /><br />
+<div>
+  <button (click)="increamentCount()">Thich</button>
+  <button (click)="resetCount()">Reset Gaar</button>
+  <p>Yeti choti thichichis fuchey heyr: {{ count }}</p>
+</div>
+<input type="text" #box placeholder="J Sukai Haal hai " />
+<button (click)="getValue(box.value)">Thich na</button>
+<p>{{ displayVal }}</p>
+
+<!-- Binding -->
+<div>
+  <input type="text" [(ngModel)]="name" />
+  <p>Welcome {{ name }}</p>
+</div>
+
+<!-- Split Two Way Binding -->
+<div>
+  <input
+    type="text"
+    placeholder="J sukai lekh"
+    [ngModel]="userName"
+    (ngModelChange)="greetName($event)"
+  />
+  <p>Welcome {{ userName }}</p>
+</div>
+
+<!-- Using Getters and Setters -->
+<div>
+  <input type="text" [(ngModel)]="customerName">
+  <p>{{customerName}}</p>
+</div>
