@@ -14,7 +14,7 @@
 
 <!-- Binding -->
 <div>
-  <input type="text" [(ngModel)]="name" />
+  <input #nameRef type="text" [(ngModel)]="name" />  <!--Attaching template ref variable-->
   <p>Welcome {{ name }}</p>
 </div>
 

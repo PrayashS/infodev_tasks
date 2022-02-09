@@ -1,16 +1,25 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit{
   title = 'This is app';
   imgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw5Bb9jBRhja9z8mGryHkg_80rjT7wB8ZfekIYB54xjbAQ8k4-bGYn8UZ6Fl_yS-5ytUg&usqp=CAU';
   count = 0;
   name: string|undefined;
   userName: string|undefined;
+  @ViewChild('nameRef')nameElementRef: ElementRef | undefined
+
+  ngAfterViewInit(): void {
+      this.nameElementRef?.nativeElement.focus();
+      console.log(this.nameElementRef)
+  }
+
+  // Getters and Setters
+  
   // Getters and Setters
   private _customerName: string|undefined //Changing to private property
 
