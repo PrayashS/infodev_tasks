@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDO List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+    <div class="container">
+        <form action="/" method="POST" autocomplete="off">
+            <header class="bg-dark mb-3 mt-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <nav class="navbar justify-content-between">
+                        <a class="navbar-brand" style="color: #fff">Add Item</a>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </header>
+              <!-- Content Section -->
+              <section class="outer">
+                <div class="container">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-12 col-md-8">
+                      <h1>Add Item Of Your Choice</h1>
+                      <div class="inner">
+                        <div class="form-row">
+                          <div class="col-8 mr-sm-2">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter your Item"
+                              id="additeminput"
+                              name="todoValue"  required
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            class="btn btn-success mr-sm-2"
+                            id="additembtn"
+                          >
+                            Add Item
+                          </button>
+
+        </form>
+    </div>
+    <div class="todo-container mt-5">
+        <% if(data) { %>
+            <% data.forEach(todoValue => { %>
+                <div class="todo-value">
+                <ul class="list-group">
+                    <li class="list-group-item"><%= todoValue.todo %>
+                        <button type="button" class="btn btn-danger " style="float: right;">Danger</button></li>
+                    
+
+                </ul>                  
+                </div>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+</body>
+</html>
