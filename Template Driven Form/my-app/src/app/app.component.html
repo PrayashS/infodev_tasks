@@ -1,0 +1,215 @@
+<h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+<div class="container col 8 mt-5">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="firstname" class="form-label">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstname"
+        name="firstname"
+        formControlName="firstname"
+      />
+      <div
+        *ngIf="
+          registerFormControl['firstname'].touched &&
+          registerFormControl['firstname'].invalid
+        "
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            registerFormControl['firstname'].errors &&
+            registerFormControl['firstname'].errors['required']
+          "
+        >
+          Firstname is required.
+        </div>
+
+        <div
+          *ngIf="
+            registerFormControl['firstname'].errors &&
+            registerFormControl['firstname'].errors['minlength']
+          "
+        >
+          Firstname should be 3 character.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="lastname" class="form-label">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastname"
+        name="lastname"
+        formControlName="lastname"
+      />
+      <div
+        *ngIf="
+          registerFormControl['lastname'].touched &&
+          registerFormControl['lastname'].invalid
+        "
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            registerFormControl['lastname'].errors &&
+            registerFormControl['lastname'].errors['required']
+          "
+        >
+          Lastname is required.
+        </div>
+
+        <div
+          *ngIf="
+            registerFormControl['lastname'].errors &&
+            registerFormControl['lastname'].errors['minlength']
+          "
+        >
+          Lastname should be 3 character.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        formControlName="email"
+      />
+      <div
+        *ngIf="
+          registerFormControl['email'].touched &&
+          registerFormControl['email'].invalid
+        "
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            registerFormControl['email'].errors &&
+            registerFormControl['email'].errors['required']
+          "
+        >
+          Email is required.
+        </div>
+        <div
+          *ngIf="
+            registerFormControl['email'].errors &&
+            registerFormControl['email'].errors['email']
+          "
+        >
+          Please, enter valid email address.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="gender" class="form-label">Gender</label>
+      <div>
+        <input
+          type="radio"
+          value="male"
+          id="male"
+          name="gender"
+          formControlName="gender"
+        />Male
+        <input
+          type="radio"
+          value="female"
+          id="female"
+          name="gender"
+          formControlName="gender"
+        />Female
+      </div>
+      <div
+        *ngIf="
+          registerFormControl['gender'].touched &&
+          registerFormControl['gender'].invalid
+        "
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            registerFormControl['gender'].errors &&
+            registerFormControl['gender'].errors['required']
+          "
+        >
+          Please select your gender.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3 form-check">
+      <label for="age" class="form-check-label">Above 18</label>
+      <input
+        type="checkbox"
+        id="age"
+        class="form-check-input"
+        name="age"
+        formControlName="age"
+      />
+      <div
+        *ngIf="
+          registerFormControl['age'].touched &&
+          registerFormControl['age'].invalid
+        "
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            registerFormControl['age'].errors &&
+            registerFormControl['age'].errors['required']
+          "
+        >
+          Please check if you are above 18.
+        </div>
+      </div>
+    </div>
+
+    <div formGroupName="address">
+      <div class="form-group">
+        <label for="city" class="form-label">City</label>
+        <input
+          type="text"
+          class="form-control"
+          name="city"
+          formControlName="city"
+        />
+        <!-- <div *ngIf="registerFormControl['city'].touched && registerFormControl['city'].invalid" class="alert alert-danger">
+          <div *ngIf="registerFormControl['city'].errors && registerFormControl['city'].errors['required']">Please provide your city name.</div>
+      </div> -->
+      <div *ngIf="contactForm.get('address.city')?.errors && contactForm.get('address.city')?.touched" class="alert alert-danger"> 
+        Is Invalid
+        <div *ngIf="contactForm.get('address.city')?.errors?.['required']">
+          City name required
+        </div>
+        <div *ngIf="contactForm.get('address.city')?.errors?.['minlength']">
+          Min length 6
+        </div>
+      </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pincode" class="form-label">Pin Code</label>
+        <input
+          type="text"
+          class="form-control"
+          name="pincode"
+          formControlName="pincode"
+        />
+      </div>
+      <!-- <div *ngIf="registerFormControl['pincode'].touched && registerFormControl['pincode'].invalid" class="alert alert-danger">
+        <div *ngIf="registerFormControl['pincode'].errors && registerFormControl['pincode'].errors['required']">Please provide your city pincode.</div>
+    </div> -->
+    </div>
+    <div class="button mt-3">
+      <button
+        type="submit"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
