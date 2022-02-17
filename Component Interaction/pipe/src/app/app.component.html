@@ -1,0 +1,43 @@
+<h1>{{title}}</h1>
+<div class = "container">
+  <div class="row">
+    <div class="col-md-8">
+      <input type="text" class="form-control" [(ngModel)]="filteredString" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngFor="let user of users | myPipe:filteredString" class= "my-3">
+      <div>Name: {{user.name | uppercase}}</div>
+      <div>Joined Date: {{user.joinedDate | date}}</div>
+    </div> 
+  </div>
+</div>
+</div>
+
+
+
+
+<!-- <div class="container text-center">
+  <h1>{{title}}</h1>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="search-name">
+        <input class="form-control" type="text" name="search" placeholder="Search by id, name or country" [(ngModel)]="searchText">
+      </div>
+      <table class="table table-stripped">
+        <thead>
+          <td>Id</td>
+          <td>Name</td>
+          <td>Country</td>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hero of heros | filter:searchText"></tr>
+          <td>{{hero.id}}</td>
+          <td>{{hero.name}}</td>
+          <td>{{hero.country}}</td>
+        </tbody>
+      </table>
+    </div>
+  </div> -->

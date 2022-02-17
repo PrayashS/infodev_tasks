@@ -1,0 +1,34 @@
+<div class="row mt-5">
+    <div class="col-3">
+      <input type="text"name="name" class="form-control" placeholder="Userame" aria-label="First name" [(ngModel)]="username">
+    </div>
+    <div class="col-3">
+      <input type="text" name="Age" class="form-control" placeholder="Age" aria-label="Last name" [(ngModel)]="userage">
+    </div>
+    
+    <button type="button" class="btn btn-primary col-2" *ngIf="add" (click)="passValue()">Add</button>
+    
+    <button type="button" class="btn btn-primary col-2" *ngIf="update" (click)="editValue()">Update</button>
+
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th *ngFor="let heading of headings">{{heading.headings}}</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let arr of array">
+          <td>{{arr.name}}</td>
+          <td>{{arr.age}}</td>
+          <td>
+              <button type="button" class="btn btn-primary" (click)="editData(arr.name,arr.age)">Edit</button>
+              <button type="button" class="btn btn-primary" (click)="viewData(arr.name,arr.age)">View</button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
