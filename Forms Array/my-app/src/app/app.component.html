@@ -25,7 +25,12 @@
         <label *ngIf="details.controls[i].get('age')?.errors"
           >Please provide your age
         </label>
-        <!-- <label *ngIf="details.controls[i].get('age')?.errors?['min']"></label> -->
+        <!-- <div>
+          {{details.controls[i].get('age')?.errors? |json}}
+        </div> -->
+        <label *ngIf="details.controls[i].get('age')?.errors?.['min']">
+          Min Age 21
+        </label>
         <input type="text" formControlName="address" placeholder="Address" />
         <label *ngIf="details.controls[i].get('address')?.errors"
           >Please provide your address</label
@@ -34,11 +39,15 @@
         <br />
       </ng-container>
     </ng-container>
-    <div>
+    <div *ngFor="let lessnForm of details.controls; let i = index; let f=first; let l=last;"
+    [formGroupName]="i">
+
       <button
         class="btn btn-primary"
         (click)="addLesson()"
-        [disabled]="formStructure.invalid"
+        type="submit"
+        [disabled]="details.controls[i].invalid"
+        *ngIf="l"
       >
         Add
       </button>

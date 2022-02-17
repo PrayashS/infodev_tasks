@@ -27,7 +27,7 @@ export class AppComponent {
   addLesson(){
     const lessonForm = this.fb.group({
       name:['', Validators.required],
-      age:['', Validators.required, Validators.min(21)],
+      age:['', [Validators.required, Validators.min(21)]],
       address:['', Validators.required]
     })
     this.details.push(lessonForm)
@@ -36,5 +36,5 @@ export class AppComponent {
   deleteLesson(index:any){
     this.details.removeAt(index)
   }
-  
+
 }
