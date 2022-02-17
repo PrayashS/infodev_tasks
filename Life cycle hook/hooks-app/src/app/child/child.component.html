@@ -1,0 +1,14 @@
+<table class="table table-dark mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Joined Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of userData">
+      <td>{{ data.name }}</td>
+      <td>{{ data.joinedDate }}</td>
+    </tr>
+  </tbody>
+</table>
